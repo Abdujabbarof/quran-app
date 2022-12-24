@@ -45,6 +45,15 @@
                 font-weight: 500;
             }
 
+            .right{
+                max-width: 12rem;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+            }
+
             .left{
                 display: flex;
                 justify-content: flex-start;
@@ -95,12 +104,42 @@
     }
 }
 
-@media (max-width: 584px) {
+
+
+@media (max-width: 768px) {
     html{
         .surahs{
-            padding: 5rem 3.3%;
             .container{
                 grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 492px) {
+    html{
+        .surahs{
+            .container{
+                .card{
+                    padding: 1.4rem;
+                    
+                    .left{
+                        min-width: 15.3rem;
+                        gap: 1.3rem;
+
+                        .text{
+                            p{
+                                max-width: 10rem;
+                                width: 100%;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
