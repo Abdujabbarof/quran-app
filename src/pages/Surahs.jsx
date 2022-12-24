@@ -10,7 +10,7 @@ function Surahs() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    axios.get("http://api.alquran.cloud/v1/surah")
+    axios.get("https://api.alquran.cloud/v1/surah")
     .then((data) => {
       setData(data.data.data);
       setLoading(false)
