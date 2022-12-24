@@ -1,0 +1,107 @@
+.surahs{
+    width: 100%;
+    min-height: 100vh;
+    padding: 7rem 3.3% 3rem;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.30) , rgba(255, 255, 255, 0.50)), url(https://www.quronim.uz/_next/static/media/bg.6b536365.png);
+    background-color: white;
+    background-attachment: fixed;
+
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+
+        .card{
+            width: 100%;
+            padding: 1.5rem 1.8rem;
+            background-color: white;
+            border: 1.5px solid #f4f2f1;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: black;
+
+            &:hover{
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                border-color: #068e3f;
+
+                p{
+                    color: #068e3f;
+                }
+
+                .left{
+                    .num{
+                        background-color: #068e3f;
+                        color: white;
+                    }
+                }
+            }
+
+            p{
+                font-size: 1.1rem;
+                color: gray;
+                font-weight: 500;
+            }
+
+            .left{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 2rem;
+
+
+                .num{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 5px;
+                    background-color: #f4f2f1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transform: rotate(45deg);
+
+                    span{
+                        font-size: 1.5rem;
+                        transform: rotate(-45deg);
+                        font-weight: 800;
+                    }
+                }
+
+                .text{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
+
+                    h3{
+                        font-size: 1.4rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    html{
+        .surahs{
+            .container{
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+
+@media (max-width: 584px) {
+    html{
+        .surahs{
+            padding: 5rem 3.3%;
+            .container{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

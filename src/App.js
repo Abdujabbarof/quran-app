@@ -1,14 +1,20 @@
-import Footer from './components/Footer';
 import Header from './components/Header';
 import './Main.scss'
+import { Routes, Route } from 'react-router';
 import Home from './pages/Home';
+import Surah from './pages/Surah';
+import Surahs from './pages/Surahs';
 
 function App() {
   return (
     <div className="App">
-      {/* <Header /> */}
-      <Home />
-      {/* <Footer /> */}
+      <>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/surahs' element={<Surahs />} />
+          <Route path='/surah' element={<Surah />} />
+        </Routes>
+      </>
     </div>
   );
 }

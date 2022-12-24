@@ -2,6 +2,7 @@ import React from 'react'
 import Footer from '../components/Footer'
 import logo from '../images/logo.png'
 import bg from '../images/background.png'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -17,8 +18,8 @@ const Home = () => {
                 <img src={bg} alt="" />
 
                 <div className="buttons">
-                    <a href="#" className='btn'>Qur'oni karim</a>
-                    <a href="#" className='btn'>Namoz vaqtlari</a>
+                    <Link className='btn' to={'/surahs'}>Qur'oni karim</Link>
+                    <Link className='btn'>Namoz vaqtlari</Link>
                 </div>
             </div>
         </section>

@@ -7,34 +7,111 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.container{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+.btn {
+    max-width: 25rem;
+    min-width: 22.5rem;
+    width: 100%;
+    background-color: #068e3f;
+    border: 0;
+    border-radius: 56px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    outline: 0;
+    padding: 16px 21px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.btn:before {
+    background-color: initial;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.546) 0, rgba(255, 255, 255, 0) 100%);
+    border-radius: 125px;
+    content: "";
+    height: 50%;
+    left: 4%;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    transition: all .3s;
+    width: 92%;
+}
+.btn:hover {
+    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+    transform: scale(1.05);
+}
+img{
+    max-width: 100%;
+}
 
 html{
     font-size: 10px;
 
-    .container{
-        max-width: 1400px;
+    .header{
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        margin: 0 auto;
-    }
+        background-color: #068e3f;
+        display: flex;
+        z-index: 100;
 
-    img{
-        max-width: 100%;
+        .btn{
+            max-width: 100%;
+            padding: 1.1rem;
+            min-width: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.6rem;
+            font-weight: 400;
+
+            i{
+                font-size: 2rem;
+            }
+        }
+        
+        .btn:before{
+            width: 100%;
+            left: 0;
+            border-radius: 0;
+        }
+
+        .btn:hover {
+            transform: scale(1);
+            border-radius: 0;
+        }
     }
 
     .main{
         width: 100%;
         min-height: 100vh;
         background: url(https://www.quronim.uz/_next/static/media/bg.6b536365.png);
-        background-color: beige;
+        background-color: white;
+        background-attachment: fixed;
 
         header{
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             padding: 1rem 2.3%;
     
             .container{
+                max-width: 1400px;
+
                 a{
                     display: flex;
                     justify-content: flex-start;
@@ -54,11 +131,11 @@ html{
         .showcase{
             width: 100%;
             height: 100vh;
-            padding: 7rem 3.3%;
+            padding: 0 3.3%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             gap: 3rem;
 
             .buttons{
@@ -67,49 +144,6 @@ html{
                 justify-content: center;
                 align-items: center;
                 gap: 2rem;
-                
-                .btn {
-                    max-width: 25rem;
-                    min-width: 22.5rem;
-                    width: 100%;
-                    background-color: #068e3f;
-                    border: 0;
-                    border-radius: 56px;
-                    color: #fff;
-                    cursor: pointer;
-                    display: inline-block;
-                    font-size: 18px;
-                    font-weight: 600;
-                    outline: 0;
-                    padding: 16px 21px;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    transition: all .3s;
-                    user-select: none;
-                    -webkit-user-select: none;
-                    touch-action: manipulation;
-                }
-                
-                .btn:before {
-                    background-color: initial;
-                    background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
-                    border-radius: 125px;
-                    content: "";
-                    height: 50%;
-                    left: 4%;
-                    opacity: .5;
-                    position: absolute;
-                    top: 0;
-                    transition: all .3s;
-                    width: 92%;
-                }
-                
-                .btn:hover {
-                    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
-                    transform: scale(1.05);
-                }
-                
             }
         }
         
@@ -145,12 +179,28 @@ html{
     }
 }
 
+
+
+
 @media (max-width: 584px) {
-  
     html{
+
+        .header{
+            .btn{
+                padding: 1.4rem 0;
+                font-size: 1.2rem;
+                gap: .5rem;
+
+                i{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+        
         .main{
             .showcase{
                 justify-content: center;
+                gap: 2rem;
                 img{
                     max-width: 40rem;
                     width: 100%;
@@ -159,32 +209,24 @@ html{
                     flex-direction: column;
 
                     .btn{
-                        max-width: 30rem;
-                        padding: 1.5rem 2rem;
+                        max-width: 28rem;
+                        font-size: 1.8rem;
+                        padding: 1rem;
                     }
                 }
             }
         }
     }
-
 }
 
-@media (max-width: 492px) {
-    
+
+
+@media (max-width: 492px) { 
     html{
 
         .main{
             .showcase{
                 padding: 5rem 1.5rem;
-                gap: 1rem;
-
-                .buttons{
-                    .btn{
-                        // max-width: 25rem;
-                        font-size: 1.8rem;
-                        padding: 1.3rem;
-                    }
-                }
             }
         }
 
@@ -204,5 +246,4 @@ html{
         }
 
     }
-
 }

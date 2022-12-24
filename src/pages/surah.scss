@@ -1,0 +1,132 @@
+.cards{
+    width: 100%;
+    min-height: 100vh;
+    padding: 7rem 3.3% 3rem;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.30) , rgba(255, 255, 255, 0.50)), url(https://www.quronim.uz/_next/static/media/bg.6b536365.png);
+    background-color: white;
+    background-attachment: fixed;
+
+    h4{
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    h1{
+        font-size: 3.3rem;
+        margin-top: 1rem;
+        text-align: center;
+    }
+    
+    h2{
+        font-size: 3rem;
+        text-align: center;
+        font-weight: 300;
+        margin-top: 1rem;
+    }
+
+    .card-wrap{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 5rem;
+
+        .card{
+            width: 100%;
+            padding: 3rem 3.3%;
+            background-color: white;
+            border: 1.5px solid #f4f2f1;
+            border-radius: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: flex-start;
+
+            h5{
+                font-size: 1.5rem;
+                color: gray;
+                font-weight: 500;
+                font-family: sans-serif;
+                width: 4rem;
+                height: 4rem;
+                border: 2px solid gray;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+            }
+            
+            h1{
+                align-self: flex-end;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-end;
+                flex-direction: row-reverse;
+                text-align: end;
+                gap: 1rem;
+
+                span{
+                    width: 4rem;
+                    height: 4rem;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: url(https://cdn.pixabay.com/photo/2012/04/18/01/19/separator-36415_1280.png);
+                    background-position: center;
+                    background-size: cover;
+                }
+            }
+
+            h3{
+                font-size: 2rem;
+                color: #068e3f;
+                margin-top: 2rem;
+                text-align: justify;
+            }
+
+            button{
+                border: none;
+                background: none;
+                font-size: 1.5rem;
+                margin-top: 2rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 1rem;
+
+                i{
+                    font-size: 2.3rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    html{
+        .cards{
+            .card-wrap{
+                .card{
+                    h1{
+                        font-size: 2.6rem;
+                        line-height: 180%;
+
+                        span{
+                            max-width: 3rem;
+                            min-width: 3rem;
+                            max-height: 3rem;
+                            min-height: 3rem;
+                            width: 100%;
+                        }
+                    }
+                    h3{
+                        font-size: 1.8rem;
+                    }
+                }
+            }
+        }
+    }
+}
