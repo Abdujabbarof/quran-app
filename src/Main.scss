@@ -1,0 +1,208 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+html{
+    font-size: 10px;
+
+    .container{
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    img{
+        max-width: 100%;
+    }
+
+    .main{
+        width: 100%;
+        min-height: 100vh;
+        background: url(https://www.quronim.uz/_next/static/media/bg.6b536365.png);
+        background-color: beige;
+
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2.3%;
+    
+            .container{
+                a{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-end;
+                    font-size: 2.3rem;
+                    font-weight: 500;
+                    color: #068e3f;
+                    gap: 2px;
+
+                    img{
+                        max-width: 5.5rem;
+                    }
+                }
+            }
+        }
+
+        .showcase{
+            width: 100%;
+            height: 100vh;
+            padding: 7rem 3.3%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 3rem;
+
+            .buttons{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                
+                .btn {
+                    max-width: 25rem;
+                    min-width: 22.5rem;
+                    width: 100%;
+                    background-color: #068e3f;
+                    border: 0;
+                    border-radius: 56px;
+                    color: #fff;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-size: 18px;
+                    font-weight: 600;
+                    outline: 0;
+                    padding: 16px 21px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    transition: all .3s;
+                    user-select: none;
+                    -webkit-user-select: none;
+                    touch-action: manipulation;
+                }
+                
+                .btn:before {
+                    background-color: initial;
+                    background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+                    border-radius: 125px;
+                    content: "";
+                    height: 50%;
+                    left: 4%;
+                    opacity: .5;
+                    position: absolute;
+                    top: 0;
+                    transition: all .3s;
+                    width: 92%;
+                }
+                
+                .btn:hover {
+                    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+                    transform: scale(1.05);
+                }
+                
+            }
+        }
+        
+        footer{
+            position: absolute;
+            bottom: 0;
+        }
+    }
+    
+    footer{
+        position: relative;
+        width: 100%;
+        padding: 1.5rem 3.3%;
+        background-color: #068e3f;
+        box-shadow: rgba(1, 115, 54, 0.25) 0px 14px 28px, rgba(1, 115, 54, 0.22) 0px 10px 10px;
+        
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            
+            p{
+                font-size: 1.5rem;
+                color: white;
+                
+                a{
+                    font-weight: 700;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 584px) {
+  
+    html{
+        .main{
+            .showcase{
+                justify-content: center;
+                img{
+                    max-width: 40rem;
+                    width: 100%;
+                }
+                .buttons{
+                    flex-direction: column;
+
+                    .btn{
+                        max-width: 30rem;
+                        padding: 1.5rem 2rem;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 492px) {
+    
+    html{
+
+        .main{
+            .showcase{
+                padding: 5rem 1.5rem;
+                gap: 1rem;
+
+                .buttons{
+                    .btn{
+                        // max-width: 25rem;
+                        font-size: 1.8rem;
+                        padding: 1.3rem;
+                    }
+                }
+            }
+        }
+
+        footer{
+            padding: 1.5rem 3.3%;
+
+            .container{
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 2rem;
+                row-gap: .5rem;
+
+                p{
+                    font-size: 1.3rem;
+                }
+            }
+        }
+
+    }
+
+}
