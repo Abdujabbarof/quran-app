@@ -1,31 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import './surah.scss'
+import axios, { all } from 'axios'
+import { useParams } from 'react-router'
 
 const Surah = () => {
+    const [ayah, setAyah] = useState()
+    const [trans, setTrans] = useState()
+    const { id } = useParams()
+    const [loading, setLoading] = useState(true)
+
+    // useEffect(() => {
+    //     axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
+    //     .then((data) => {
+    //         setData(data.data.data)
+    //         setLoading(false)
+    //     })
+    // }, [])
+    
+    useEffect(() => {
+        const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
+        const trans = axios.get(`https://api.alquran.cloud/v1/surah/${id}/uz.sodik`)
+        
+        axios.all([ayahs, trans])
+        .then(axios.spread((...allData) => {
+            setAyah(allData[0].data.data)
+            setTrans(allData[1].data.data.ayahs)
+            setLoading(false)
+        }))
+    }, [])
+
   return (
     <>
         <Header back home lang />
         <div className="cards">
-            <h4>Al-Baqarah</h4>
-            <h1>سُورَةُ ٱلْفَاتِحَةِ</h1>
+            {/* <h4>{loading ? <></> : ayah.name}</h4> */}
+            {/* <h1>{loading ? <></> : data.name}</h1> */}
 
             <div className="card-wrap">
-                <div className="card">
-                    <h5>1:1</h5>
-                    <h1>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span>1</span></h1>
-                    <h3>1.Алиф Лом Мим. (Қуръони Каримнинг йигирма тўққиз сураси ҳарфлар билан бошланган. Бу ҳарфларга турлича номлар берилган: баъзилар "Ҳурифул муқатаот" кесик ҳарфлар десалар, бошқалар "Ҳурифул ҳижои" алифбо ҳарифлари дейдилар, учинчилари эса, "Фавотуҳус суар" сураларни очувчилар дейдилар. Бу ҳарфларга турлича ном берилганидек, улар ила бошланишидан кўзланган мурод ҳақида ҳам ҳар хил фикрлар айтилган. Бу ҳақда махсус баҳслар ҳам бор. Баъзи уламолар бу ҳарфларнинг сирини Аллоҳга ҳавола этадилар, бошқалари: "Бу Аллоҳ билан Пайғамбар алайҳиссалом ўрталаридаги сир", дейдилар. Бошқа бирлари эса, уларга ўзларича маъно йўйганлар. Ихтилофнинг асосий сабаби-улар ҳақида на Пайғамбар алайҳиссаломнинг ўзларидан ва на саҳобаи киромлардан бирорта ҳам ривоят йўқлигидир.)</h3>
+                {
+                    loading ? <h1>Loading...</h1> : ayah.ayahs.map(item => (
+                        <div key={item.number} className="card">
+                            <h5>{ayah.number}:{item.numberInSurah}</h5>
+                            <h1>{item.text} <span>{item.numberInSurah}</span></h1>
+                            <h3></h3>
 
-                    <button><i class="fa-solid fa-volume-high"></i> Play Audio</button>
-                </div>
-
-                <div className="card">
-                    <h5>1:1</h5>
-                    <h1>ٱلَّذِينَ يُؤْمِنُونَ بِٱلْغَيْبِ وَيُقِيمُونَ ٱلصَّلَوٰةَ وَمِمَّا رَزَقْنَٰهُمْ يُنفِقُونَ <span>1</span></h1>
-                    <h3>1.Алиф Лом Мим. (Қуръони Каримнинг йигирма тўққиз сураси ҳарфлар билан бошланган. Бу ҳарфларга турлича номлар берилган: баъзилар "Ҳурифул муқатаот" кесик ҳарфлар десалар, бошқалар "Ҳурифул ҳижои" алифбо ҳарифлари дейдилар, учинчилари эса, "Фавотуҳус суар" сураларни очувчилар дейдилар. Бу ҳарфларга турлича ном берилганидек, улар ила бошланишидан кўзланган мурод ҳақида ҳам ҳар хил фикрлар айтилган. Бу ҳақда махсус баҳслар ҳам бор. Баъзи уламолар бу ҳарфларнинг сирини Аллоҳга ҳавола этадилар, бошқалари: "Бу Аллоҳ билан Пайғамбар алайҳиссалом ўрталаридаги сир", дейдилар. Бошқа бирлари эса, уларга ўзларича маъно йўйганлар. Ихтилофнинг асосий сабаби-улар ҳақида на Пайғамбар алайҳиссаломнинг ўзларидан ва на саҳобаи киромлардан бирорта ҳам ривоят йўқлигидир.)</h3>
-
-                    <button><i class="fa-solid fa-volume-high"></i> Play Audio</button>
-                </div>
+                            <button><i class="fa-solid fa-volume-high"></i> Play Audio</button>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </>
