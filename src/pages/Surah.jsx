@@ -10,6 +10,7 @@ const Surah = () => {
     const [tran, setTrans] = useState()
     const [audio, setAudio] = useState()
     const [loading, setLoading] = useState(true)
+    const [state, setState] = useState(false)
     const play = new Audio()
     
     useEffect(() => {
@@ -25,11 +26,20 @@ const Surah = () => {
             setLoading(false)
         }))
     }, [])
-    
-    const showNum = (e) => {
+
+    const player = (e) => {
         play.src = ""
         play.src = `${audio[e.target.parentElement.getAttribute("order") - 1].audio}`
         play.play()
+        setState(true)
+    }
+
+    play.addEventListener('loadedmetadata', (a) => {
+        console.log(a.target.duration);
+    })
+
+    const control = () => {
+        setState(!state)
     }
 
   return (
@@ -47,10 +57,20 @@ const Surah = () => {
                             <h1>{item.text} <span>{item.numberInSurah}</span></h1>
                             <h3>{tran[item.numberInSurah - 1].text}</h3>
 
-                            <button onClick={showNum}><i class="fa-solid fa-volume-high"></i> Play Audio</button>
+                            <button onClick={player}><i class="fa-solid fa-volume-high"></i> Play Audio</button>
                         </div>
                     ))
                 }
+            </div>
+
+            <div className="player">
+                <div className="buttons">
+                    <button className='back'><i class="fa-solid fa-backward"></i></button>
+                    <button className='play' onClick={control}>{state ? <i class="fa-solid fa-pause"></i> : <i class="fa-solid fa-play"></i>}</button>
+                    <button className='next'><i class="fa-solid fa-forward"></i></button>
+                </div>
+                <input type="range" id='range' />
+                <button className='retry'><i class="fa-solid fa-rotate-right"></i></button>
             </div>
         </div>
     </>
