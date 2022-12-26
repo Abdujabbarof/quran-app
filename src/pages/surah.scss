@@ -41,6 +41,7 @@
             justify-content: flex-start;
             flex-direction: column;
             align-items: flex-start;
+            cursor: pointer;
 
             h5{
                 font-size: 1.3rem;
@@ -188,4 +189,10 @@
             }
         }
     }
+}
+
+
+
+::selection{
+    display: none;
 }

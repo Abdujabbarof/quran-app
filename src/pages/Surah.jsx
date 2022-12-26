@@ -30,7 +30,7 @@ const Surah = () => {
 
     const player = (e) => {
         play.src = ""
-        play.src = `${audio[e.target.parentElement.getAttribute("order") - 1].audio}`
+        play.src = `${audio[e.target.getAttribute("order") - 1].audio}`
         play.play()
     }
 
@@ -52,12 +52,12 @@ const Surah = () => {
             <div className="card-wrap">
                 {
                     loading ? <h1>Loading...</h1> : ayah.ayahs.map(item => (
-                        <div key={item.number} order={item.numberInSurah} className="card">
-                            <h5>{ayah.number}:{item.numberInSurah}</h5>
-                            <h1>{item.text} <span>{item.numberInSurah}</span></h1>
-                            <h3>{tran[item.numberInSurah - 1].text}</h3>
+                        <div key={item.number} order={item.numberInSurah} className="card" onClick={player}>
+                            <h5 order={item.numberInSurah}>{ayah.number}:{item.numberInSurah}</h5>
+                            <h1 order={item.numberInSurah}>{item.text} <span>{item.numberInSurah}</span></h1>
+                            <h3 order={item.numberInSurah}>{tran[item.numberInSurah - 1].text}</h3>
 
-                            <button onClick={player}><i class="fa-solid fa-volume-high"></i> Play Audio</button>
+                            <button order={item.numberInSurah}><i class="fa-solid fa-volume-high"></i> Play Audio</button>
                         </div>
                     ))
                 }
