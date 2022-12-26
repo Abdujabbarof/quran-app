@@ -1,14 +1,15 @@
 .wrapper{
     width: 100%;
     min-height: 100vh;
-    padding: 0 3.3%;
+    padding: 3rem 3.3% 0rem;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.30) , rgba(255, 255, 255, 0.50)), url(https://www.quronim.uz/_next/static/media/bg.6b536365.png);
     background-color: white;
     background-attachment: fixed;
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
     justify-content: center;
     align-items: center;
-    padding-top: 3rem;
 
     .round{
         position: relative;
@@ -29,7 +30,7 @@
             background-image: linear-gradient(rgba(255, 255, 255, 0.546) 0, rgba(255, 255, 255, 0) 100%);
             left: 50%;
             bottom: 50%;
-            transform: translateX(-50%) rotate(72deg);
+            transform: translateX(-50%) rotate(144deg);
             transform-origin: center bottom;
             transition: .4s;
             border-radius: 45% 45% 0 0;
@@ -171,6 +172,8 @@
 @media (max-width: 768px) {
     html{
         .wrapper{
+            padding: 0rem;
+
             .round{
                 width: 350px;
                 height: 350px;
@@ -215,6 +218,64 @@
 
                 .xufton{
                     top: 28%;
+                    left: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 350px) {
+    html{
+        .wrapper{
+            padding: 0rem;
+            
+            .round{
+                width: 280px;
+                height: 280px;
+
+                .centre{
+                    width: 20px;
+                    height: 20px;
+                }
+
+                .line{
+                    width: 4px;
+                    height: 60px;
+                }
+
+                .circle{
+                    width: 70px;
+                    height: 70px;
+
+                    h2{
+                        font-size: 1.5rem;
+                    }
+
+                    h3{
+                        font-size: 1.6rem;
+                    }
+                }
+
+                .peshin{
+                    top: 27%;
+                    right: 10px;
+                }
+
+                .asr{
+                    top: 66%;
+                    right: 45px;
+                }
+
+                .shom{
+                    top: 66%;
+                    left: 45px;
+                }
+
+                .xufton{
+                    top: 27%;
                     left: 10px;
                 }
             }

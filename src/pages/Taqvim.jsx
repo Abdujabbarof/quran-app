@@ -31,6 +31,7 @@ const Taqvim = () => {
               <div className="centre"></div>
               <div className="line"></div>
             </div>
+            <h1></h1>
         </div>
     </>
   )
