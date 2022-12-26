@@ -11,6 +11,7 @@ const Surah = () => {
     const [audio, setAudio] = useState()
     const [loading, setLoading] = useState(true)
     const [state, setState] = useState(false)
+    const [num, setNum] = useState(0)
     const play = new Audio()
     
     useEffect(() => {
@@ -31,7 +32,6 @@ const Surah = () => {
         play.src = ""
         play.src = `${audio[e.target.parentElement.getAttribute("order") - 1].audio}`
         play.play()
-        setState(true)
     }
 
     play.addEventListener('loadedmetadata', (a) => {
@@ -69,7 +69,10 @@ const Surah = () => {
                     <button className='play' onClick={control}>{state ? <i class="fa-solid fa-pause"></i> : <i class="fa-solid fa-play"></i>}</button>
                     <button className='next'><i class="fa-solid fa-forward"></i></button>
                 </div>
-                <input type="range" id='range' />
+                <div className="text">
+                    <h3>{loading ? <></> : ayah.englishName}</h3>
+                    <p><span>{num}</span> - oyat</p>
+                </div>
                 <button className='retry'><i class="fa-solid fa-rotate-right"></i></button>
             </div>
         </div>
