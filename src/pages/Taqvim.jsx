@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../pages/taqvim.scss'
 import Header from '../components/Header'
 
 const Taqvim = () => {
+  let date = new Date()
+  let [time, setTime] = useState(date.toLocaleTimeString([], {hour12: false}))
+  setInterval(() => {
+    setTime(new Date().toLocaleTimeString([], {hour12: false}))
+  }, 1000)
+
   return (
     <>
         <Header home />
@@ -31,7 +37,11 @@ const Taqvim = () => {
               <div className="centre"></div>
               <div className="line"></div>
             </div>
-            <h1></h1>
+            {/* <div className="time">
+              <div className="h1">TASHKENT</div>
+              <div className="h1">26/12/2022</div>
+              <div className="h1">{time}</div>
+            </div> */}
         </div>
     </>
   )
