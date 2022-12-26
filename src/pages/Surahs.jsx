@@ -54,7 +54,7 @@ function Surahs() {
           </Link> */}
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

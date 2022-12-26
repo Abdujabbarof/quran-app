@@ -1,0 +1,224 @@
+.wrapper{
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 3.3%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.30) , rgba(255, 255, 255, 0.50)), url(https://www.quronim.uz/_next/static/media/bg.6b536365.png);
+    background-color: white;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+
+    .round{
+        position: relative;
+        width: 630px;
+        height: 630px;
+        background-color: rgba(255, 255, 255, 0.499);
+        border-radius: 50%;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .line{
+            width: 10px;
+            height: 175px;
+            position: absolute;
+            background-color: #068e3f;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.546) 0, rgba(255, 255, 255, 0) 100%);
+            left: 50%;
+            bottom: 50%;
+            transform: translateX(-50%) rotate(72deg);
+            transform-origin: center bottom;
+            transition: .4s;
+            border-radius: 45% 45% 0 0;
+        }
+
+        .centre{
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: #068e3f;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.546) 0, rgba(255, 255, 255, 0) 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .circle{
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            gap: 5px;
+
+            h2{
+                font-size: 2rem;
+                color: black;
+                line-height: 100%;
+                text-shadow: 2px 4px 3px rgba(0,0,0,0.3)
+            }
+
+
+            h3{
+                font-size: 2.2rem;
+                color: white;
+                line-height: 100%;
+                text-shadow: 2px 4px 3px rgba(0,0,0,0.3)
+            }
+        }
+
+        .tong{
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.10) , rgba(255, 255, 255, 0.50)), url(https://storage.kun.uz/source/3/UVsmR1Yt3vh8Dk_nZtLK0IkDAU_o8nKe.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .peshin{
+            top: 28.5%;
+            right: 20px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.10) , rgba(255, 255, 255, 0.50)), url(https://imengine.public.prod.cmg.infomaker.io/?uuid=c1d3deeb-6e98-5e7e-a0c2-a3d30517b8e7&function=cropresize&type=preview&source=false&q=75&crop_w=0.99999&crop_h=0.99999&width=1200&height=675&x=1.0E-5&y=1.0E-5);
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .asr{
+            top: 72%;
+            right: 105px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.10) , rgba(255, 255, 255, 0.50)), url(https://nationaltoday.com/wp-content/uploads/2022/05/Sun-Day-.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .shom{
+            top: 72%;
+            left: 105px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.10) , rgba(255, 255, 255, 0.50)), url(https://jabberwocking.com/wp-content/uploads/2022/04/blog_lunchtime_sunset_over_north_tustin.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .xufton{
+            top: 28.5%;
+            left: 20px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.10) , rgba(255, 255, 255, 0.50)), url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/%D0%A1%D0%B2%D0%B5%D1%82_%D0%BE%D1%82_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BD%D0%B8_-_panoramio.jpg/640px-%D0%A1%D0%B2%D0%B5%D1%82_%D0%BE%D1%82_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BD%D0%B8_-_panoramio.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+    }
+}
+
+
+@media (max-width: 968px) {
+    html{
+        .wrapper{
+            .round{
+                width: 500px;
+                height: 500px;
+
+                .centre{
+                    width: 40px;
+                    height: 40px;
+                }
+
+                .line{
+                    width: 7px;
+                    height: 130px;
+                }
+
+                .circle{
+                    width: 100px;
+                    height: 100px;
+                }
+
+                .peshin{
+                    right: 15px;
+                }
+
+                .asr{
+                    top: 71%;
+                    right: 85px;
+                }
+
+                .shom{
+                    top: 71%;
+                    left: 85px;
+                }
+
+                .xufton{
+                    left: 15px;
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    html{
+        .wrapper{
+            .round{
+                width: 350px;
+                height: 350px;
+
+                .centre{
+                    width: 30px;
+                    height: 30px;
+                }
+
+                .line{
+                    width: 5px;
+                    height: 80px;
+                }
+
+                .circle{
+                    width: 80px;
+                    height: 80px;
+
+                    h2{
+                        font-size: 1.7rem;
+                    }
+
+                    h3{
+                        font-size: 1.8rem;
+                    }
+                }
+
+                .peshin{
+                    top: 28%;
+                    right: 10px;
+                }
+
+                .asr{
+                    top: 68%;
+                    right: 55px;
+                }
+
+                .shom{
+                    top: 68%;
+                    left: 55px;
+                }
+
+                .xufton{
+                    top: 28%;
+                    left: 10px;
+                }
+            }
+        }
+    }
+}
+

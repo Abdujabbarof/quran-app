@@ -19,11 +19,11 @@ const Home = () => {
 
                 <div className="buttons">
                     <Link className='btn' to={'/surahs'}>Qur'oni karim</Link>
-                    <Link className='btn'>Namoz vaqtlari</Link>
+                    <Link className='btn' to={'./taqvim'}>Namoz vaqtlari</Link>
                 </div>
             </div>
         </section>
-        <Footer />
+        {/* <Footer /> */}
     </>
   )
 }

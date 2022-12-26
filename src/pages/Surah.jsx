@@ -24,10 +24,10 @@ const Surah = () => {
             setAudio(allData[2].data.data.ayahs)
             setLoading(false)
         }))
-        .catch(err => alert("Something went wrong ("))
     }, [])
     
     const showNum = (e) => {
+        play.src = ""
         play.src = `${audio[e.target.parentElement.getAttribute("order") - 1].audio}`
         play.play()
     }
