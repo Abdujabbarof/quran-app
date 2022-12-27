@@ -13,10 +13,11 @@ const Surah = () => {
     const [isPlaying, setIsPlaying] = useState(false)
     const [count, setCount] = useState(0)
     const play = new Audio()
+    const [lang, setLang] = useState(true)
 
     useEffect(() => {
         const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
-        const trans = axios.get(`https://api.alquran.cloud/v1/surah/${id}/uz.sodik`)
+        const trans = axios.get(lang ? `https://api.alquran.cloud/v1/surah/${id}/uz.sodik` : `https://api.alquran.cloud/v1/surah/${id}/ru.kuliev`)
         const audios = axios.get(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
         
         axios.all([ayahs, trans, audios])
@@ -27,6 +28,7 @@ const Surah = () => {
             setLoading(false)
         }))
     }, [])
+
     const player = (e) => {
         play.src = ""
         play.src = `${audio[e.target.getAttribute("order") - 1].audio}`
@@ -35,34 +37,34 @@ const Surah = () => {
 
     const elemAudio = useRef()
 
-    
-    const playPause = () => {
-        setIsPlaying(!isPlaying)
-        elemAudio.current.src = `${audio[count].audio}`
-        elemAudio.current.addEventListener('loadedmetadata', (a) => {
-            console.log(a.target.duration);
-        })
-    }
-
     const next = () => {
-        if(count < audio.length){
-            setCount(count + 1)
-        }
         isPlaying ? setIsPlaying(true) : setIsPlaying(true)
-        elemAudio.current.src = `${audio[count].audio}`
+        if(count < audio.length -1){
+            setCount(prev => prev + 1)
+            elemAudio.current.src = `${audio[count + 1].audio}`
+        }
         elemAudio.current.play()
     }
 
     const back = () => {
         if(count > 0){
+            isPlaying ? setIsPlaying(true) : setIsPlaying(true)
             setCount(count - 1)
+            elemAudio.current.src = `${audio[count -1].audio}`
         }
-        isPlaying ? setIsPlaying(true) : setIsPlaying(true)
-        elemAudio.current.src = `${audio[count].audio}`
         elemAudio.current.play()
     }
 
+    const playPause = () => {
+        setIsPlaying(!isPlaying)
+        elemAudio.current.src = `${audio[count].audio}`
+    }
 
+    const reset = () => {
+        setCount(0)
+        elemAudio.current.src = `${audio[0].audio}`
+        elemAudio.current.play()
+    }
 
     useEffect(() => {
         if(isPlaying){
@@ -102,9 +104,9 @@ const Surah = () => {
                 </div>
                 <div className="text">
                     <h3>{loading ? <></> : ayah.englishName}</h3>
-                    <p><span>0</span> - oyat</p>
+                    <p><span>{count + 1}</span> - oyat</p>
                 </div>
-                <button className='retry'><i class="fa-solid fa-rotate-right"></i></button>
+                <button className='retry' onClick={reset}><i class="fa-solid fa-rotate-right"></i></button>
             </div>
         </div>
     </>
