@@ -17,7 +17,7 @@ const Taqvim = () => {
             <div className="round">
               <div className="circle tong">
                 <h2>Тонг</h2>
-                <h3>06:19</h3>
+                <h3>06:20</h3>
               </div>
               <div className="circle peshin">
                 <h2>Решин</h2>

@@ -13,11 +13,10 @@ const Surah = () => {
     const [isPlaying, setIsPlaying] = useState(false)
     const [count, setCount] = useState(0)
     const play = new Audio()
-    const [lang, setLang] = useState(true)
 
     useEffect(() => {
         const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
-        const trans = axios.get(lang ? `https://api.alquran.cloud/v1/surah/${id}/uz.sodik` : `https://api.alquran.cloud/v1/surah/${id}/ru.kuliev`)
+        const trans = axios.get(true ? `https://api.alquran.cloud/v1/surah/${id}/uz.sodik` : `https://api.alquran.cloud/v1/surah/${id}/ru.kuliev`)
         const audios = axios.get(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
         
         axios.all([ayahs, trans, audios])
@@ -54,10 +53,13 @@ const Surah = () => {
         }
         elemAudio.current.play()
     }
-
+    
     const playPause = () => {
         setIsPlaying(!isPlaying)
         elemAudio.current.src = `${audio[count].audio}`
+        // elemAudio.current.addEventListener("loadedmetadata", function(e) {
+        //     console.log(e.target.duration);
+        // })
     }
 
     const reset = () => {
@@ -77,7 +79,7 @@ const Surah = () => {
   return (
     <>
         <Header back home lang />
-        <audio src="" ref={elemAudio} />
+        <audio src="" ref={elemAudio} type="audio/ogg" />
         <div className="cards">
             <h4>{loading ? <></> : ayah.englishName}</h4>
             <h1>{loading ? <></> : ayah.name}</h1>
