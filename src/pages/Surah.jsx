@@ -12,7 +12,6 @@ const Surah = () => {
     const [loading, setLoading] = useState(true)
     const [isPlaying, setIsPlaying] = useState(false)
     const [count, setCount] = useState(0)
-    const play = new Audio()
 
     useEffect(() => {
         const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
@@ -27,14 +26,19 @@ const Surah = () => {
             setLoading(false)
         }))
     }, [])
+    const elemAudio = useRef()
 
     const player = (e) => {
-        play.src = ""
-        play.src = `${audio[e.target.getAttribute("order") - 1].audio}`
-        play.play()
-    }
+        elemAudio.current.src = ""
+        elemAudio.current.src = `${audio[e.target.getAttribute("order") - 1].audio}`
+        elemAudio.current.play()
+        setCount(Number(e.target.getAttribute("order") - 1))
+        setIsPlaying(true) 
 
-    const elemAudio = useRef()
+        elemAudio.current.addEventListener("loadedmetadata", function(e) {
+            console.log(e.target.duration)
+        })
+    }
 
     const next = () => {
         isPlaying ? setIsPlaying(true) : setIsPlaying(true)
@@ -57,12 +61,10 @@ const Surah = () => {
     const playPause = () => {
         setIsPlaying(!isPlaying)
         elemAudio.current.src = `${audio[count].audio}`
-        // elemAudio.current.addEventListener("loadedmetadata", function(e) {
-        //     console.log(e.target.duration);
-        // })
     }
 
     const reset = () => {
+        isPlaying ? setIsPlaying(true) : setIsPlaying(true)
         setCount(0)
         elemAudio.current.src = `${audio[0].audio}`
         elemAudio.current.play()
