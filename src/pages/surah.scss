@@ -169,10 +169,12 @@
     html{
         .cards{
             .card-wrap{
+                margin-top: 2rem;
                 .card{
                     h1{
-                        font-size: 2.6rem;
+                        font-size: 2.2rem;
                         line-height: 180%;
+                        margin: 0;
 
                         span{
                             max-width: 3rem;
@@ -183,7 +185,8 @@
                         }
                     }
                     h3{
-                        font-size: 1.8rem;
+                        margin-top: .6rem;
+                        font-size: 1.5rem;
                     }
                 }
             }
@@ -200,6 +203,7 @@
         }
     }
 }
+
 
 
 

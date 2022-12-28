@@ -240,8 +240,11 @@
             }
 
             .time{
+                flex-wrap: wrap;
+
                 .h1{
                     font-size: 2rem;
+                    line-height: 100%;
                 }
             }
         }
