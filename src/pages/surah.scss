@@ -187,6 +187,16 @@
                     }
                 }
             }
+
+            .player{
+                button{
+                    font-size: 1.7rem;
+                }
+
+                .buttons{
+                    gap: .5rem;
+                }
+            }
         }
     }
 }
