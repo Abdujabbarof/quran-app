@@ -4,7 +4,7 @@ import './surah.scss'
 import axios, { all } from 'axios'
 import { useParams } from 'react-router'
 
-const Surah = () => {
+const Surah = ({control}) => {
     const { id } = useParams()
     const [ayah, setAyah] = useState()
     const [tran, setTrans] = useState()
@@ -15,7 +15,7 @@ const Surah = () => {
 
     useEffect(() => {
         const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
-        const trans = axios.get(true ? `https://api.alquran.cloud/v1/surah/${id}/uz.sodik` : `https://api.alquran.cloud/v1/surah/${id}/ru.kuliev`)
+        const trans = axios.get(control ? `https://api.alquran.cloud/v1/surah/${id}/uz.sodik` : `https://api.alquran.cloud/v1/surah/${id}/ru.kuliev`)
         const audios = axios.get(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
         
         axios.all([ayahs, trans, audios])
@@ -25,7 +25,8 @@ const Surah = () => {
             setAudio(allData[2].data.data.ayahs)
             setLoading(false)
         }))
-    }, [])
+    }, [control])
+    
     const elemAudio = useRef()
 
     const player = (e) => {
@@ -80,7 +81,7 @@ const Surah = () => {
 
   return (
     <>
-        <Header back home lang />
+        <Header back home langu />
         <audio src="" ref={elemAudio} type="audio/ogg" />
         <div className="cards">
             <h4>{loading ? <></> : ayah.englishName}</h4>

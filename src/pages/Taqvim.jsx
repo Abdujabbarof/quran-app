@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../pages/taqvim.scss'
 import Header from '../components/Header'
+import axios from 'axios'
 
 const Taqvim = () => {
   let date = new Date()
@@ -10,29 +11,34 @@ const Taqvim = () => {
     setTime(new Date().toLocaleTimeString([], {hour12: false}))
   }, 1000)
 
+  // useEffect(() => {
+  //   axios.get("")
+  //   .then(res => console.log(res.data))
+  // }, [])
+
   return (
     <>
         <Header home />
         <div className="wrapper">
             <div className="round">
               <div className="circle tong">
-                <h2>Тонг</h2>
+                <h2>Bomdod</h2>
                 <h3>06:20</h3>
               </div>
               <div className="circle peshin">
-                <h2>Решин</h2>
+                <h2>Peshin</h2>
                 <h3>12:23</h3>
               </div>
               <div className="circle asr">
-                <h2>Аср</h2>
+                <h2>Asr</h2>
                 <h3>15:18</h3>
               </div>
               <div className="circle shom">
-                <h2>Шом</h2>
+                <h2>Shom</h2>
                 <h3>17:04</h3>
               </div>
               <div className="circle xufton">
-                <h2>Хуфтон</h2>
+                <h2>Xufton</h2>
                 <h3>18:22</h3>
               </div>
               <div className="centre"></div>
