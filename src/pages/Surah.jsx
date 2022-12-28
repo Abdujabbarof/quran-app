@@ -76,7 +76,7 @@ const Surah = ({control}) => {
 
             <div className="card-wrap">
                 {
-                    loading ? <h1>Loading...</h1> : ayah.ayahs.map(item => (
+                    loading ? <h1 className='loading'>Loading...</h1> : ayah.ayahs.map(item => (
                         <div key={item.number} order={item.numberInSurah} className="card" onClick={player}>
                             <h5 order={item.numberInSurah}>{ayah.number}:{item.numberInSurah}</h5>
                             <h1 order={item.numberInSurah}>{item.text} <span>{item.numberInSurah}</span></h1>

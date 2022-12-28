@@ -23,7 +23,7 @@ function Surahs() {
       <section className='surahs'>
         <div className="container">
           {
-            loading ? <h1>Loading...</h1> : data.map(elem => (
+            loading ? <h1 className='loading'>Loading...</h1> : data.map(elem => (
               <Link key={elem.number} className='card' to={`/surahs/${elem.number}`}>
                 <div className="left">
                   <div className="num"><span>{elem.number}</span></div>

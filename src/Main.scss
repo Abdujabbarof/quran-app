@@ -54,6 +54,13 @@
 img{
     max-width: 100%;
 }
+.loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+}
 
 html{
     font-size: 10px;
