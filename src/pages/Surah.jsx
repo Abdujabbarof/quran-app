@@ -12,6 +12,7 @@ const Surah = ({control}) => {
     const [audio, setAudio] = useState()
     const [loading, setLoading] = useState(true)
     const [count, setCount] = useState(0)
+    const [loop, setLoop] = useState(false)
     const elemAudio = useRef()
 
     useEffect(() => {
@@ -35,6 +36,7 @@ const Surah = ({control}) => {
             setCount(0)
         }
 
+        elemAudio.current.loop = false
         elemAudio.current.src = `${audio[count + 1].audio}`
         elemAudio.current.play()
     }
@@ -43,6 +45,7 @@ const Surah = ({control}) => {
         elemAudio.current.src = ""
         elemAudio.current.src = `${audio[e.target.getAttribute("order") - 1].audio}`
         elemAudio.current.play()
+        elemAudio.current.loop = false
         setCount(Number(e.target.getAttribute("order") - 1))
     }
 
@@ -52,25 +55,24 @@ const Surah = ({control}) => {
             elemAudio.current.src = `${audio[count -1].audio}`
         }
         elemAudio.current.play()
+        elemAudio.current.loop = false
     }
     
     const play = () => {
         elemAudio.current.src = `${audio[count].audio}`
         elemAudio.current.play()
-
-        elemAudio.current.addEventListener('ended', function(){
-            
-        })
+        elemAudio.current.loop = false
     }
 
     const pause = () => {
         elemAudio.current.src = `${audio[count].audio}`
+        elemAudio.current.loop = false
     }
 
     const reset = () => {
-        setCount(0)
-        elemAudio.current.src = `${audio[0].audio}`
+        elemAudio.current.src = `${audio[count].audio}`
         elemAudio.current.play()
+        elemAudio.current.loop = true
     }
 
     loading ? document.title = `IQRO.uz` : document.title = `IQRO.uz || ${ayah.englishName}`
@@ -109,7 +111,7 @@ const Surah = ({control}) => {
                         <h3>{loading ? <></> : ayah.englishName}</h3>
                         <p><span>{count + 1}</span> - oyat</p>
                     </div>
-                    <button className='retry' onClick={reset}><i class="fa-solid fa-rotate-right"></i></button>
+                    <button className='retry' onClick={reset}><i class="fa-solid fa-infinity"></i></button>
                 </div>
             }
 
