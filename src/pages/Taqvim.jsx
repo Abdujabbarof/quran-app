@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../pages/taqvim.scss'
 import Header from '../components/Header'
 import axios from 'axios'
 
 const Taqvim = () => {
-  let date = new Date()
-  let [time, setTime] = useState(date.toLocaleTimeString([], {hour12: false}));
+  const time = new Date().getHours()
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
-  
-  setInterval(() => {
-    setTime(new Date().toLocaleTimeString([], {hour12: false}))
-  }, 1000)
 
   useEffect(() => {
     axios.get("https://dailyprayer.abdulrcs.repl.co/api/tashkent")
@@ -49,12 +44,7 @@ const Taqvim = () => {
                     <h3>{data.today["Isha'a"]}</h3>
                   </div>
                   <div className="centre"></div>
-                  <div className="line"></div>
-                </div>
-                <div className="time">
-                  <div className="h1">{data.city}</div>
-                  <div className="h1">{data.date}</div>
-                  <div className="h1">{time}</div>
+                  <div className="line" style={{transform: `translateX(-50%)`, rotate: `${time > data.today.Fajr.slice(0,2) ? 72 : time > data.today.Dhuhr.slice(0,2) ? 144 : time > data.today.Asr.slice(0,2) ? 216 : time > data.today.Maghrib.slice(0,2) ? 288 : time > data.today["Isha'a"].slice(0,2) ? 0 : 0}deg`}}></div>
                 </div>
               </>
             }
