@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import './surahs.scss'
 import axios from 'axios'
+import ScrollButton from '../components/ScrollButton'
 
 function Surahs() {
   const [data, setData] = useState()
@@ -39,22 +40,9 @@ function Surahs() {
               </Link>
             ))
           }
-          {/* <Link className='card' to={'/surah'}>
-              <div className="left">
-                <div className="num"><span>1</span></div>
-                <div className="text">
-                  <h3>Al-Fatihah</h3>
-                  <p>The Opener</p>
-                </div>
-              </div>
-              <div className="right">
-                <h4>سُورَةُ ٱلْفَاتِحَةِ</h4>
-                <p>Meccan, 7 Ayahs</p>
-              </div>
-          </Link> */}
+          <ScrollButton />
         </div>
       </section>
-      {/* <Footer /> */}
     </>
   )
 }

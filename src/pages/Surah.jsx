@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import './surah.scss'
 import axios, { all } from 'axios'
 import { useParams } from 'react-router'
+import TopButton from '../components/ScrollButton'
 
 const Surah = ({control}) => {
     const { id } = useParams()
@@ -111,6 +112,8 @@ const Surah = ({control}) => {
                     <button className='retry' onClick={reset}><i class="fa-solid fa-rotate-right"></i></button>
                 </div>
             }
+
+            {/* <TopButton /> */}
         </div>
     </>
   )
