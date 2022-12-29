@@ -31,8 +31,11 @@ const Surah = ({control}) => {
     const next = () => {
         if(count < audio.length -1){
             setCount(prev => prev + 1)
-            elemAudio.current.src = `${audio[count + 1].audio}`
+        }else{
+            setCount(0)
         }
+
+        elemAudio.current.src = `${audio[count + 1].audio}`
         elemAudio.current.play()
     }
 
@@ -42,6 +45,7 @@ const Surah = ({control}) => {
         elemAudio.current.play()
         setCount(Number(e.target.getAttribute("order") - 1))
     }
+
 
     const back = () => {
         if(count > 0){
@@ -54,6 +58,10 @@ const Surah = ({control}) => {
     const play = () => {
         elemAudio.current.src = `${audio[count].audio}`
         elemAudio.current.play()
+
+        elemAudio.current.addEventListener('ended', function(){
+            
+        })
     }
 
     const pause = () => {
@@ -69,7 +77,7 @@ const Surah = ({control}) => {
   return (
     <>
         <Header back home langu />
-        <audio src="" ref={elemAudio} type="audio/ogg" />
+        <audio src="" ref={elemAudio} onEnded={next} type="audio/ogg" />
         <div className="cards">
             <h4>{loading ? <></> : ayah.englishName}</h4>
             <h1>{loading ? <></> : ayah.name}</h1>
