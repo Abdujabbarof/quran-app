@@ -5,6 +5,7 @@ import bg from '../images/background.png'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
+    document.title = "IQRO.uz"
   return (
     <>
         <section className='main'>

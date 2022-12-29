@@ -8,6 +8,8 @@ const Taqvim = () => {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
 
+  document.title = "IQRO.uz || Taqvim"
+
   useEffect(() => {
     axios.get("https://dailyprayer.abdulrcs.repl.co/api/tashkent")
     .then(res => {

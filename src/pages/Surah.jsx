@@ -14,7 +14,6 @@ const Surah = ({control}) => {
     const [count, setCount] = useState(0)
     const elemAudio = useRef()
 
-
     useEffect(() => {
         const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
         const trans = axios.get(control ? `https://api.alquran.cloud/v1/surah/${id}/uz.sodik` : `https://api.alquran.cloud/v1/surah/${id}/ru.kuliev`)
@@ -47,7 +46,6 @@ const Surah = ({control}) => {
         setCount(Number(e.target.getAttribute("order") - 1))
     }
 
-
     const back = () => {
         if(count > 0){
             setCount(count - 1)
@@ -74,6 +72,8 @@ const Surah = ({control}) => {
         elemAudio.current.src = `${audio[0].audio}`
         elemAudio.current.play()
     }
+
+    loading ? document.title = `IQRO.uz` : document.title = `IQRO.uz || ${ayah.englishName}`
 
   return (
     <>

@@ -10,6 +10,8 @@ function Surahs() {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
 
+  document.title = "IQRO.uz || Surahs"
+
   useEffect(() => {
     axios.get("https://api.alquran.cloud/v1/surah")
     .then((data) => {
