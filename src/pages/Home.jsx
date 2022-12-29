@@ -10,7 +10,7 @@ const Home = () => {
         <section className='main'>
             <header>
                 <div className="container">
-                    <a href="#"><img src={logo} alt="" /> IQRO.uz</a>
+                    <a href="/"><img src={logo} alt="" /> IQRO.uz</a>
                 </div>
             </header>
 

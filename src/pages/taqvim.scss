@@ -7,9 +7,17 @@
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
+    padding-top: 7.5rem;
+
+    .time{
+        align-self: flex-start;
+        font-size: 2rem;
+        color: #068e3f;
+        line-height: 100%;
+    }
 
     .round{
         position: relative;
@@ -30,8 +38,8 @@
             background-image: linear-gradient(rgba(255, 255, 255, 0.546) 0, rgba(255, 255, 255, 0) 100%);
             left: 50%;
             bottom: 50%;
-            transform-origin: center bottom;
             transition: .4s;
+            transform-origin: bottom center;
             border-radius: 45% 45% 0 0;
         }
 
@@ -59,7 +67,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
             gap: 5px;
 
             h2{
@@ -125,6 +133,13 @@
 @media (max-width: 968px) {
     html{
         .wrapper{
+            padding: 0;
+            gap: 2rem;
+
+            .time{
+                align-self: center;
+            }
+
             .round{
                 width: 500px;
                 height: 500px;
@@ -230,6 +245,10 @@
     html{
         .wrapper{
             padding: 0rem;
+
+            .time{
+                font-size: 1.7rem;
+            }
             
             .round{
                 width: 280px;

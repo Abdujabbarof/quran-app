@@ -16,8 +16,6 @@ const Taqvim = () => {
     })
   }, [])
 
-  // console.log(loading ? null : time > data.today["Isha'a"].slice(0,2) ? 0 : time > data.today.Maghrib.slice(0,2) ? 288 : time > data.today.Asr.slice(0,2) ? 216 : time >= data.today.Dhuhr.slice(0,2) ? 144 : time > data.today.Fajr.slice(0,2) ? 72 : 0);
-
   return (
     <>
         <Header home />
@@ -46,8 +44,9 @@ const Taqvim = () => {
                     <h3>{data.today["Isha'a"]}</h3>
                   </div>
                   <div className="centre"></div>
-                  <div className="line" style={{transform: `translateX(-50%)`, rotate: `${time > data.today["Isha'a"].slice(0,2) ? 0 : time > data.today.Maghrib.slice(0,2) ? 288 : time > data.today.Asr.slice(0,2) ? 216 : time > data.today.Dhuhr.slice(0,2) ? 144 : time > data.today.Fajr.slice(0,2) ? 72 : 0}deg`}}></div>
+                  <div className="line" style={{transform: `translateX(-50%) rotate(${time > data.today["Isha'a"].slice(0,2) ? 0 : time > data.today.Maghrib.slice(0,2) ? 288 : time > data.today.Asr.slice(0,2) ? 216 : time > data.today.Dhuhr.slice(0,2) ? 144 : time > data.today.Fajr.slice(0,2) ? 72 : 0}deg)`}}></div>
                 </div>
+                <h1 className='time'>{data.city} {data.date}</h1>
               </>
             }
         </div>
