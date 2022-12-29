@@ -20,7 +20,10 @@ const Home = () => {
 
                 <div className="buttons">
                     <Link className='btn' to={'/surahs'}>Qur'oni karim</Link>
+                </div>
+                <div className="buttons">
                     <Link className='btn' to={'./taqvim'}>Namoz vaqtlari</Link>
+                    <Link className='btn' to={'/tasbeh'}>Tasbeh</Link>
                 </div>
             </div>
         </section>
