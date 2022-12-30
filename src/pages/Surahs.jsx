@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Footer from '../components/Footer'
 import Header from '../components/Header'
 import './surahs.scss'
 import axios from 'axios'
 import ScrollButton from '../components/ScrollButton'
 
 function Surahs() {
+  document.title = "IQRO.uz || Surahs"
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true)
-
-  document.title = "IQRO.uz || Surahs"
-
+  const [search, setSearch] = useState('')
+  
   useEffect(() => {
     axios.get("https://api.alquran.cloud/v1/surah")
     .then((data) => {
@@ -24,9 +23,10 @@ function Surahs() {
     <>
       <Header home />
       <section className='surahs'>
+          <input type="text" placeholder='Qidiruv...' className='input' value={search} onChange={e => setSearch(e.target.value)} />
         <div className="container">
           {
-            loading ? <h1 className='loading'>Loading...</h1> : data.map(elem => (
+            loading ? <h1 className='loading'>Loading...</h1> : data.filter(item => item.englishName.toLowerCase().includes(search) || item.englishName.includes(search)).map(elem => (
               <Link key={elem.number} className='card' to={`/surahs/${elem.number}`}>
                 <div className="left">
                   <div className="num"><span>{elem.number}</span></div>
