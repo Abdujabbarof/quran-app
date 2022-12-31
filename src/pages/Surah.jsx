@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../components/Header'
 import './surah.scss'
-import axios, { all } from 'axios'
+import axios from 'axios'
 import { useParams } from 'react-router'
-import TopButton from '../components/ScrollButton'
 
 const Surah = ({control}) => {
     const { id } = useParams()
@@ -12,7 +11,6 @@ const Surah = ({control}) => {
     const [audio, setAudio] = useState()
     const [loading, setLoading] = useState(true)
     const [count, setCount] = useState(0)
-    const [loop, setLoop] = useState(false)
     const elemAudio = useRef()
 
     useEffect(() => {
@@ -30,7 +28,7 @@ const Surah = ({control}) => {
     }, [control])    
 
     const next = () => {
-        if(count < audio.length -1){
+        if(count < audio.length - 1){
             setCount(prev => prev + 1)
         }else{
             setCount(0)
@@ -52,7 +50,7 @@ const Surah = ({control}) => {
     const back = () => {
         if(count > 0){
             setCount(count - 1)
-            elemAudio.current.src = `${audio[count -1].audio}`
+            elemAudio.current.src = `${audio[count - 1].audio}`
         }
         elemAudio.current.play()
         elemAudio.current.loop = false
@@ -114,8 +112,6 @@ const Surah = ({control}) => {
                     <button className='retry' onClick={reset}><i class="fa-solid fa-infinity"></i></button>
                 </div>
             }
-
-            {/* <TopButton /> */}
         </div>
     </>
   )

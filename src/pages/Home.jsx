@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from '../components/Footer'
 import logo from '../images/logo.png'
 import bg from '../images/background.png'
 import { Link } from 'react-router-dom'
@@ -27,7 +26,6 @@ const Home = () => {
                 </div>
             </div>
         </section>
-        {/* <Footer /> */}
     </>
   )
 }

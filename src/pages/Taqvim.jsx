@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../pages/taqvim.scss'
 import Header from '../components/Header'
 import axios from 'axios'

@@ -23,7 +23,7 @@ function Surahs() {
     <>
       <Header home />
       <section className='surahs'>
-          <input type="text" placeholder='Qidiruv...' className='input' value={search} onChange={e => setSearch(e.target.value)} />
+        <input type="text" placeholder='Qidiruv...' className='input' value={search} onChange={e => setSearch(e.target.value)} />
         <div className="container">
           {
             loading ? <h1 className='loading'>Loading...</h1> : data.filter(item => item.englishName.toLowerCase().includes(search) || item.englishName.includes(search)).map(elem => (

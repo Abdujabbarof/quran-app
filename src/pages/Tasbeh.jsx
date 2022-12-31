@@ -23,7 +23,7 @@ function Tasbeh() {
         setCount(0)
     }
 
-    if(count == 33){
+    if(count === 33){
         setCount(0)
         setCounter(counter + 1)
     }
