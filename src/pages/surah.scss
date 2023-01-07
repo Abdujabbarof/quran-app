@@ -5,10 +5,15 @@
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.30) , rgba(255, 255, 255, 0.50)), url(https://www.quronim.uz/_next/static/media/bg.6b536365.png);
     background-color: white;
     background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 
     h4{
         font-size: 2rem;
         font-weight: 600;
+        align-self: flex-start;
     }
 
     h1{
@@ -58,6 +63,7 @@
             }
             
             h1{
+                font-family: sans-serif;
                 align-self: flex-end;
                 display: flex;
                 justify-content: flex-start;
@@ -163,6 +169,43 @@
             }
         }
     }
+
+    .changer{
+        position: sticky;
+        bottom: 1rem;
+        border: none;
+        outline: none;
+        padding: 0 .5rem;
+        background: #068e3f;
+        border-radius: 30px;
+        color: white;
+        border-radius: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: .5rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        min-width: 141px;
+        height: 45px;
+        align-self: flex-end;
+        transition: .4s;
+
+        &:active{
+            transform: scale(1.03);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+    
+        span{
+            width: 100%;
+            text-align: center;
+        }
+    
+        img{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+    }
 }
 
 @media (max-width: 768px) {
@@ -198,6 +241,15 @@
 
                 .buttons{
                     gap: .5rem;
+                }
+            }
+
+            .changer{
+                min-width: auto;
+                bottom: 6rem;
+
+                span{
+                    display: none;
                 }
             }
         }
