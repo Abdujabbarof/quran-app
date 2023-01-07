@@ -21,7 +21,7 @@ const Surah = ({control}) => {
     useEffect(() => {
         const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
         const trans = axios.get(control ? `https://api.alquran.cloud/v1/surah/${id}/uz.sodik` : `https://api.alquran.cloud/v1/surah/${id}/ru.kuliev`)
-        const audios = axios.get(reader == "mishary" ? `https://api.alquran.cloud/v1/surah/${id}/ar.alafasy` : reader == "husary" ? `https://api.alquran.cloud/v1/surah/${id}/ar.husary` : `https://api.alquran.cloud/v1/surah/${id}/ar.minshawi`)
+        const audios = axios.get(reader === "mishary" ? `https://api.alquran.cloud/v1/surah/${id}/ar.alafasy` : reader === "husary" ? `https://api.alquran.cloud/v1/surah/${id}/ar.husary` : `https://api.alquran.cloud/v1/surah/${id}/ar.minshawi`)
         
         axios.all([ayahs, trans, audios])
         .then(axios.spread((...allData) => {
@@ -37,6 +37,8 @@ const Surah = ({control}) => {
             setCount(prev => prev + 1)
         }else{
             setCount(0)
+            elemAudio.current.src = `${audio[0].audio}`
+            elemAudio.current.play()
         }
 
         elemAudio.current.loop = false
@@ -79,10 +81,10 @@ const Surah = ({control}) => {
     }
 
     const changeReader = () => {
-        if(reader == "mishary"){
+        if(reader === "mishary"){
             setReader("husary")
             elemAudio.current.pause()
-        } else if(reader == "husary"){
+        } else if(reader === "husary"){
             setReader("minshawi")
             elemAudio.current.pause()
         } else{
@@ -103,7 +105,7 @@ const Surah = ({control}) => {
 
             <div className="card-wrap">
                 {
-                    loading ? <h1 className='loading'>Biroz kuting . . . <span>صبر</span></h1> : ayah.ayahs.map(item => (
+                    loading ? <h1 className='loading'>Biroz kuting... <span>صبر</span></h1> : ayah.ayahs.map(item => (
                         <div key={item.number} order={item.numberInSurah} className="card" onClick={player}>
                             <h5 order={item.numberInSurah}>{ayah.number}:{item.numberInSurah}</h5>
                             <h1 order={item.numberInSurah}>{item.text} <span>{item.numberInSurah}</span></h1>
@@ -131,7 +133,7 @@ const Surah = ({control}) => {
                         <button className='retry' onClick={reset}><i class="fa-solid fa-infinity"></i></button>
                     </div>
                     <button className='changer' onClick={changeReader}>
-                        <img src={reader == "mishary" ? husary : reader == "husary" ? minshawi : mishary} alt="" /> <span>{reader == "mishary" ? "Al-Husary" : reader == "husary" ? "Al-Minshawi" : "Al-Mishary"}</span>
+                        <img src={reader === "mishary" ? husary : reader === "husary" ? minshawi : mishary} alt="" /> <span>{reader === "mishary" ? "Al-Husary" : reader === "husary" ? "Al-Minshawi" : "Al-Mishary"}</span>
                     </button>
                 </>
             }

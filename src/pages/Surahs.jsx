@@ -26,7 +26,7 @@ function Surahs() {
         <input type="text" placeholder='Qidiruv...' className='input' value={search} onChange={e => setSearch(e.target.value)} />
         <div className="container">
           {
-            loading ? <h1 className='loading'>Biroz kuting . . . <span>صبر</span></h1> : data.filter(item => item.englishName.toLowerCase().includes(search) || item.englishName.includes(search)).map(elem => (
+            loading ? <h1 className='loading'>Biroz kuting... <span>صبر</span></h1> : data.filter(item => item.englishName.toLowerCase().includes(search) || item.englishName.includes(search)).map(elem => (
               <Link key={elem.number} className='card' to={`/surahs/${elem.number}`}>
                 <div className="left">
                   <div className="num"><span>{elem.number}</span></div>

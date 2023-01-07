@@ -23,7 +23,7 @@ const Taqvim = () => {
         <Header home />
         <div className="wrapper">
             {
-              loading ? <h1 className='loading'>Biroz kuting . . . <span>صبر</span></h1> : <>
+              loading ? <h1 className='loading'>Biroz kuting... <span>صبر</span></h1> : <>
                 <div className="round">
                   <div className="circle tong">
                     <h2>Bomdod</h2>
