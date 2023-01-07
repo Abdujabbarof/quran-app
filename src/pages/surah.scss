@@ -195,11 +195,11 @@
         min-width: 141px;
         height: 45px;
         align-self: flex-end;
-        transition: .4s;
+        transition: .1s;
         margin-top: 1rem;
 
         &:active{
-            transform: scale(1.03);
+            transform: scale(1.05);
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
     
