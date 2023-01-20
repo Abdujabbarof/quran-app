@@ -16,7 +16,7 @@ const Surah = ({control}) => {
     const [count, setCount] = useState(0)
     const elemAudio = useRef()
 
-    const [reader, setReader] = useState("husary");
+    const [reader, setReader] = useState("mishary");
 
     useEffect(() => {
         const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
