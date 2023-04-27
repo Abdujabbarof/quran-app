@@ -46,26 +46,26 @@ const Taqvim = () => {
                 <div className="round">
                   <div className="circle tong">
                     <h2>Bomdod</h2>
-                    <h3>{data.times.tong_saharlik}</h3>
+                    <h3>{data?.times?.tong_saharlik}</h3>
                   </div>
                   <div className="circle peshin">
                     <h2>Peshin</h2>
-                    <h3>{data.times.peshin}</h3>
+                    <h3>{data?.times?.peshin}</h3>
                   </div>
                   <div className="circle asr">
                     <h2>Asr</h2>
-                    <h3>{data.times.asr}</h3>
+                    <h3>{data?.times?.asr}</h3>
                   </div>
                   <div className="circle shom">
                     <h2>Shom</h2>
-                    <h3>{data.times.shom_iftor}</h3>
+                    <h3>{data?.times?.shom_iftor}</h3>
                   </div>
                   <div className="circle xufton">
                     <h2>Xufton</h2>
-                    <h3>{data.times.hufton}</h3>
+                    <h3>{data?.times?.hufton}</h3>
                   </div>
                   <div className="centre"></div>
-                  <div className="line" style={{transform: `translateX(-50%) rotate(${time > data.times.hufton.slice(0,2) ? 0 : time > data.times.shom_iftor.slice(0,2) ? 288 : time > data.times.asr.slice(0,2) ? 216 : time > data.times.peshin.slice(0,2) ? 144 : time > data.time.tong_saharlik.slice(0,2) && data.time.quyosh.slice(0,2) ? 72 : 0}deg)`}}></div>
+                  <div className="line" style={{transform: `translateX(-50%) rotate(${time > data?.times?.hufton.slice(0,2) ? 0 : time > data?.times?.shom_iftor.slice(0,2) ? 288 : time > data?.times?.asr.slice(0,2) ? 216 : time > data?.times?.peshin.slice(0,2) ? 144 : time > data?.time?.tong_saharlik.slice(0,2) && data?.time?.quyosh.slice(0,2) ? 72 : 0}deg)`}}></div>
                 </div>
               </>
             }
