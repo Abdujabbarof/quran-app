@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import logo from '../images/logo.png'
 import bg from '../images/background.png'
 import { Link } from 'react-router-dom'
@@ -20,10 +20,7 @@ const Home = () => {
 
                 <div className="buttons">
                     <Link className='btn' to={'/surahs'}>Qur'oni karim</Link>
-                </div>
-                <div className="buttons">
                     <Link className='btn' to={'./taqvim'}>Namoz vaqtlari</Link>
-                    <Link className='btn' to={'/tasbeh'}>Tasbeh</Link>
                 </div>
             </div>
         </section>

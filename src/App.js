@@ -7,7 +7,6 @@ import Taqvim from './pages/Taqvim';
 import Footer from './components/Footer';
 import { useContext } from 'react';
 import { LangContext } from './components/LangContext';
-import Tasbeh from './pages/Tasbeh';
 
 function App() {
 
@@ -21,7 +20,6 @@ function App() {
           <Route path='/surahs' element={<Surahs />} />
           <Route path='/surahs/:id' element={<Surah control={lang} />} />
           <Route path='/taqvim' element={<Taqvim />}/>
-          <Route path='/tasbeh' element={<Tasbeh />}/>
         </Routes>
       </>
       <Footer />

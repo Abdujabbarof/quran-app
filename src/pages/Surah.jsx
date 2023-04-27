@@ -16,12 +16,12 @@ const Surah = ({control}) => {
     const [count, setCount] = useState(0)
     const elemAudio = useRef()
 
-    const [reader, setReader] = useState("mishary");
+    const [reader, setReader] = useState("misharyx");
 
     useEffect(() => {
         const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
         const trans = axios.get(control ? `https://api.alquran.cloud/v1/surah/${id}/uz.sodik` : `https://api.alquran.cloud/v1/surah/${id}/ru.kuliev`)
-        const audios = axios.get(reader === "mishary" ? `https://api.alquran.cloud/v1/surah/${id}/ar.alafasy` : reader === "husary" ? `https://api.alquran.cloud/v1/surah/${id}/ar.husary` : `https://api.alquran.cloud/v1/surah/${id}/ar.minshawi`)
+        const audios = axios.get(reader === "mishary" ? `https://api.alquran.cloud/v1/surah/${id}/ar.alafasy` : reader === "husary" ? `https://api.alquran.cloud/v1/surah/${id}/ar.husary` : `https://api.alquran.cloud/v1/surah/${id}/ar.minshawi`);
         
         axios.all([ayahs, trans, audios])
         .then(axios.spread((...allData) => {
