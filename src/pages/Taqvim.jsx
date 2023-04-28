@@ -65,7 +65,7 @@ const Taqvim = () => {
                     <h3>{data?.times?.hufton}</h3>
                   </div>
                   <div className="centre"></div>
-                  <div className="line" style={{transform: `translateX(-50%) rotate(${time > data?.times?.hufton.slice(0,2) ? 0 : time > data?.times?.shom_iftor.slice(0,2) ? 288 : time > data?.times?.asr.slice(0,2) ? 216 : time > data?.times?.peshin.slice(0,2) ? 144 : time > data?.time?.tong_saharlik.slice(0,2) && data?.time?.quyosh.slice(0,2) ? 72 : 0}deg)`}}></div>
+                  <div className="line" style={{transform: `translateX(-50%) rotate(${time > data?.times?.hufton.slice(0,2) ? 0 : time > data?.times?.shom_iftor.slice(0,2) ? 288 : time > data?.times?.asr.slice(0,2) ? 216 : time > data?.times?.peshin.slice(0,2) ? 144 : time > data?.time?.tong_saharlik.slice(0,2) ? 72 : 0}deg)`}}></div>
                 </div>
               </>
             }
