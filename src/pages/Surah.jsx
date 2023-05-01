@@ -5,6 +5,8 @@ import axios from 'axios'
 import { useParams } from 'react-router'
 import mishary from '../images/mishary.png'
 import husary from '../images/husary.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import minshawi from '../images/minshawi.png'
 
 const Surah = ({control}) => {
@@ -32,8 +34,10 @@ const Surah = ({control}) => {
             setAudio(allData[2].data.data.ayahs)
             setLoading(false)
         }))
+
     }, [control, reader])    
 
+    
     const next = () => {
         if(count < audio.length - 1){
             setCount(prev => prev + 1)
@@ -42,10 +46,23 @@ const Surah = ({control}) => {
             elemAudio.current.src = `${audio[0].audio}`
             elemAudio.current.play()
         }
-
+        
         elemAudio.current.loop = false
         elemAudio.current.src = `${audio[count + 1].audio}`
         elemAudio.current.play()
+    }
+    
+    const toastify = (message) => {
+        toast.success(message, {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "light",
+        });
     }
 
     const player = (e) => {
@@ -85,9 +102,12 @@ const Surah = ({control}) => {
             elemAudio.current.play()
             elemAudio.current.loop = true
             setInfinity(true)
+            toastify('Infinite on!')
+            
         }else{
             elemAudio.current.loop = false
             setInfinity(false)
+            toastify('Infinite off!')
         }
     }
 
@@ -95,12 +115,15 @@ const Surah = ({control}) => {
         if(reader === "mishary"){
             setReader("husary")
             elemAudio.current.pause()
+            toastify('Mahmoud Khalil Al-Hussary')
         } else if(reader === "husary"){
             setReader("minshawi")
             elemAudio.current.pause()
+            toastify("Muhammad Siddiq al-Minshawi")
         } else{
             setReader("mishary")
             elemAudio.current.pause()
+            toastify("Mishary Rashid Alafasy")
         }
     }
 
@@ -109,6 +132,7 @@ const Surah = ({control}) => {
   return (
     <>
         <Header back home langu />
+        <ToastContainer />
         <audio src="" ref={elemAudio} onEnded={next} type="audio/ogg" />
         <div className="cards">
             <h4>{loading ? <></> : ayah.englishName}</h4>
@@ -140,7 +164,7 @@ const Surah = ({control}) => {
                             <h3>{loading ? <></> : ayah.englishName}</h3>
                             <p><span>{count + 1}</span> - oyat</p>
                         </div>
-                        <button className='retry' onClick={reset}>{infinity ? <i class="fa-solid fa-forward"></i> : <i class="fa-solid fa-infinity"></i>}</button>
+                        <button className='retry' onClick={reset}>{infinity ? <i class="fa-solid fa-arrow-right"></i> : <i class="fa-solid fa-arrow-rotate-right"></i>}</button>
                     </div>
                     <button className='changer' onClick={changeReader}>
                         <img src={reader === "mishary" ? husary : reader === "husary" ? minshawi : mishary} alt="" /> <span>{reader === "mishary" ? "Al-Husary" : reader === "husary" ? "Al-Minshawi" : "Al-Mishary"}</span>
