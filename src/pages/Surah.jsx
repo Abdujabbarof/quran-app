@@ -115,14 +115,17 @@ const Surah = ({control}) => {
         if(reader === "mishary"){
             setReader("husary")
             elemAudio.current.pause()
+            setIsPlaying(false)
             toastify('Mahmoud Khalil Al-Hussary')
         } else if(reader === "husary"){
             setReader("minshawi")
             elemAudio.current.pause()
+            setIsPlaying(false)
             toastify("Muhammad Siddiq al-Minshawi")
         } else{
             setReader("mishary")
             elemAudio.current.pause()
+            setIsPlaying(false)
             toastify("Mishary Rashid Alafasy")
         }
     }
