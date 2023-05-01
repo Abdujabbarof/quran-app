@@ -14,6 +14,8 @@ const Surah = ({control}) => {
     const [audio, setAudio] = useState()
     const [loading, setLoading] = useState(true)
     const [count, setCount] = useState(0)
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [infinity, setInfinity] = useState(false)
     const elemAudio = useRef()
 
     const [reader, setReader] = useState("misharyx");
@@ -67,17 +69,26 @@ const Surah = ({control}) => {
         elemAudio.current.src = `${audio[count].audio}`
         elemAudio.current.play()
         elemAudio.current.loop = false
+        setIsPlaying(true)
     }
 
     const pause = () => {
         elemAudio.current.src = `${audio[count].audio}`
         elemAudio.current.loop = false
+        setIsPlaying(false)
     }
 
     const reset = () => {
-        elemAudio.current.src = `${audio[count].audio}`
-        elemAudio.current.play()
-        elemAudio.current.loop = true
+        setIsPlaying(true)
+        if(!infinity) {
+            elemAudio.current.src = `${audio[count].audio}`
+            elemAudio.current.play()
+            elemAudio.current.loop = true
+            setInfinity(true)
+        }else{
+            elemAudio.current.loop = false
+            setInfinity(false)
+        }
     }
 
     const changeReader = () => {
@@ -122,15 +133,14 @@ const Surah = ({control}) => {
                     <div className="player">
                         <div className="buttons">
                             <button className='back' onClick={back}><i class="fa-solid fa-backward"></i></button>
-                            <button className='play' onClick={play}><i class="fa-solid fa-play"></i></button>
-                            <button className='pause' onClick={pause}><i class="fa-solid fa-pause"></i></button>
+                            <button className='play' onClick={isPlaying ? pause : play}>{isPlaying ? <i class="fa-solid fa-pause"></i> : <i class="fa-solid fa-play"></i>}</button>
                             <button className='next' onClick={next}><i class="fa-solid fa-forward"></i></button>
                         </div>
                         <div className="text">
                             <h3>{loading ? <></> : ayah.englishName}</h3>
                             <p><span>{count + 1}</span> - oyat</p>
                         </div>
-                        <button className='retry' onClick={reset}><i class="fa-solid fa-infinity"></i></button>
+                        <button className='retry' onClick={reset}>{infinity ? <i class="fa-solid fa-forward"></i> : <i class="fa-solid fa-infinity"></i>}</button>
                     </div>
                     <button className='changer' onClick={changeReader}>
                         <img src={reader === "mishary" ? husary : reader === "husary" ? minshawi : mishary} alt="" /> <span>{reader === "mishary" ? "Al-Husary" : reader === "husary" ? "Al-Minshawi" : "Al-Mishary"}</span>
