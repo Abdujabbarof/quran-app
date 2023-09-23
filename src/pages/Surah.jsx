@@ -66,11 +66,16 @@ const Surah = ({control}) => {
     }
 
     const player = (e) => {
-        elemAudio.current.src = ""
-        elemAudio.current.src = `${audio[e.target.getAttribute("order") - 1].audio}`
-        elemAudio.current.play()
-        elemAudio.current.loop = false
-        setCount(Number(e.target.getAttribute("order") - 1))
+        if(isPlaying) {
+            pause()
+        }else {
+            elemAudio.current.src = ""
+            elemAudio.current.src = `${audio[e.target.getAttribute("order") - 1].audio}`
+            elemAudio.current.play()
+            elemAudio.current.loop = false
+            setCount(Number(e.target.getAttribute("order") - 1))
+            setIsPlaying(true)
+        }
     }
 
     const back = () => {
