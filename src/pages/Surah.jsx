@@ -20,7 +20,7 @@ const Surah = ({control}) => {
     const [infinity, setInfinity] = useState(false)
     const elemAudio = useRef()
 
-    const [reader, setReader] = useState("misharyx");
+    const [reader, setReader] = useState(localStorage.getItem('reader') || "misharyx");
 
     useEffect(() => {
         const ayahs = axios.get(`https://api.alquran.cloud/v1/surah/${id}`)
@@ -66,7 +66,7 @@ const Surah = ({control}) => {
     }
 
     const player = (e) => {
-        if(isPlaying) {
+        if(isPlaying && count === e.target.getAttribute("order") - 1) {
             pause()
         }else {
             elemAudio.current.src = ""
@@ -117,19 +117,22 @@ const Surah = ({control}) => {
     }
 
     const changeReader = () => {
-        if(reader === "mishary"){
+        if(localStorage.getItem("reader") === "mishary"){
+            localStorage.setItem("reader", "husary")
             setReader("husary")
             elemAudio.current.pause()
             setIsPlaying(false)
             toastify('Mahmoud Khalil Al-Hussary')
-        } else if(reader === "husary"){
+        } else if(localStorage.getItem("reader") === "husary"){
+            localStorage.setItem("reader", "minshawi")
             setReader("minshawi")
             elemAudio.current.pause()
             setIsPlaying(false)
             toastify("Muhammad Siddiq al-Minshawi")
         } else{
-            setReader("mishary")
+            localStorage.setItem("reader", "mishary")
             elemAudio.current.pause()
+            setReader("mishary")
             setIsPlaying(false)
             toastify("Mishary Rashid Alafasy")
         }
@@ -172,10 +175,10 @@ const Surah = ({control}) => {
                             <h3>{loading ? <></> : ayah.englishName}</h3>
                             <p><span>{count + 1}</span> - oyat</p>
                         </div>
-                        <button className='retry' onClick={reset}>{infinity ? <i class="fa-solid fa-arrow-right"></i> : <i class="fa-solid fa-arrow-rotate-right"></i>}</button>
+                        <button className='retry' onClick={reset}>{!infinity ? <i class="fa-solid fa-arrow-right"></i> : <i class="fa-solid fa-arrow-rotate-right"></i>}</button>
                     </div>
                     <button className='changer' onClick={changeReader}>
-                        <img src={reader === "mishary" ? husary : reader === "husary" ? minshawi : mishary} alt="" /> <span>{reader === "mishary" ? "Al-Husary" : reader === "husary" ? "Al-Minshawi" : "Al-Mishary"}</span>
+                        <img src={reader === "mishary" ? mishary : reader === "husary" ? husary : minshawi} alt="" /> <span>{reader === "mishary" ? "Al-Mishary" : reader === "husary" ? "Al-Husary" : "Al-Minshawi"}</span>
                     </button>
                 </>
             }
